@@ -36,6 +36,7 @@ public class Book_ui {
 			System.out.println("	2. 소장책 추가하기");
 			System.out.println("	3. 도서 검색");
 			System.out.println("	4. 서점 소유 도서 가격합계 및 평균");
+			System.out.println("	5. 도서 삭제");
 			System.out.println("==============================");
 			
 			int select = sc.nextInt();
@@ -133,10 +134,10 @@ public class Book_ui {
 				System.out.println("도서 가격의 총합: "+server.getTotal());
 				System.out.println("도서 가격의 평균: "+server.getAvg());
 				break;
-			case 999999:
+			case 5:
 				System.out.println("삭제할 도서의 ISBN을 입력해주세요.");
 				String dISBN = sc.next();
-				server.dropBook(dISBN);
+				server.deleteBook(dISBN);
 				break;
 			default:
 				break;

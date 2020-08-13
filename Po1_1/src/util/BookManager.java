@@ -9,10 +9,13 @@ import book.Magazine;
 
 public class BookManager implements BookInte {
 	private ArrayList<Book> blist = new ArrayList<Book>();
-	private static BookManager bmg = new BookManager();
+	private static BookManager instance;
 	
 	public static BookManager getInstance() {
-		return bmg;
+		if (instance == null) {
+			instance = new BookManager();
+		}
+		return instance;
 	}
 
 	@Override
@@ -104,12 +107,13 @@ public class BookManager implements BookInte {
 		return cache;
 	}
 	
-	public void dropBook(String isbn) {
+	public void deleteBook(String isbn) {
 		Iterator<Book> iterator = blist.iterator();
 		while(iterator.hasNext()) {
 			Book bk = iterator.next();
 			if (bk.getIsbn().equals(isbn)) {
 				iterator.remove();
+				System.out.println(bk.getTitle()+"이/가 제거되었습니다.");
 			}
 		}
 	}
